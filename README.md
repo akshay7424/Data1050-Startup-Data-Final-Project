@@ -48,7 +48,7 @@ please open the provided .ipynb files by running Jupyter Lab using the DATA 1050
 ## Contact
 * [@akshay7424](https://github.com/akshay7424) at akshay_shah@brown.edu 🐛
 * [@tashakim](https://github.com/tashakim) at tasha_kim@brown.edu🐛
-* [@harry](https://github.com/tashakim) at harry_chalfin@brown.edu🐛
+* [@hchalfin](https://github.com/hchalfin) at harry_chalfin@brown.edu🐛
 * coleman_dowdle@brown.edu 🐛
 
 
