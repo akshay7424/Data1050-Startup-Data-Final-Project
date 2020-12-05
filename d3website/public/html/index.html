@@ -21,9 +21,13 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- nav bar -->
-    <h1>Startup Analysis</h1>
-    <img src="../img/startup_img.png" alt="banner img" class="banner_img" />
+<!-- page wrapper-->
+<div style="background: url(https://i.postimg.cc/ZnHTP71s/aircraft-airplane-boat-1575833.jpg)" class="page-holder bg-cover">
+
+    <div class="container py-5">
+      <header class="text-center text-white py-5">
+        <h1 class="display-4 font-weight-bold mb-4">Startup Analysis</h1>
+        <img src="../img/startup_img.png" alt="banner img" class="banner_img" />
     <nav class="navbar navbar-expand-md navbar-inverse">
       <div class="container-fluid">
         <ul class="nav navbar-nav mx-auto">
@@ -33,6 +37,25 @@
         </ul>
        
     </nav>
+        <p class="lead mb-0">The project explores the potential success of startup companies in the
+            U.S. by examining key features that economically and financially impact
+            these companies. Currently, venture capital firms use intuition, financial
+            projections, and personal connections to determine which companies receive
+            seed money. Understandably, there is high risk and uncertainty associated
+            with venture capital where only a handful of companies become unicorns (>
+            $1bn valuation) with successful exits. The goal of this machine learning
+            project is to shed some light into what variables contribute to a
+            company’s success, outside of financials, to reduce the randomness and
+            personal bias in venture capital investment.</p>
+        <p class="font-italic">Dataset: The dataset is retrieved from Kaggle, named
+            <a href="">'CAX_Startup_Data.csv'</a> <a href="https://bootstrapious.com" class="text-white">
+            <u>Bootstrapious</u></a>
+        </p>
+      </header>
+  
+    </div>
+  </div>
+
 
     <!-- background info -->
     <p class="info">
@@ -116,7 +139,7 @@
     </script>
 
     <!-- blurb -->
-    <p>SVC</p>
+    <p><b> SVC</b></p>
     <p>
       k-NN classification - We will use k-NN classification to determine whether
       the dataset has any predictive power regarding a startup company’s
