@@ -1,0 +1,19 @@
+<div id="sideBarDraftsBox" class="sideBarDraftsBox">
+    <div class="sideBarBoxHeader">
+        &nbsp; My Drafts
+    </div>
+
+    {{#each drafts}}
+        <button class="sideBarDraft sideBarButton tabHighlightable" tabindex="0"
+                id="{{draftID}}"
+                data-draft-type="{{draftType}}"
+                data-draft-title="{{draftTitle}}"
+                data-draft-body="{{draftBody}}"
+                data-draft-link="{{draftLink}}"
+                data-draft-tags="{{draftTags}}">
+            <span class="insideTabHighlightable" tabindex="-1">
+                {{draftTitle}}
+            </span>
+        </button>
+    {{/each}}
+</div>

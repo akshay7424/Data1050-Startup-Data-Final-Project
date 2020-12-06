@@ -1,0 +1,14 @@
+{{!-- sideBar component: enables the user to search using keywords or tags --}}
+<div id="searchBox" class="searchBox">
+
+    <form method="post" action="/search" id="mainFeedSearchForm">
+        <label for="searchByKeyword"> Search Posts By Keyword </label>
+        <input id="searchByKeyword" class="textInputClass" name="keyword" placeholder="Search by keyword">
+
+        <label for="searchByTag"> Search Posts By Tag </label>
+        <input id="searchByTag" class="textInputClass" placeholder="Search by state">
+
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+</div>

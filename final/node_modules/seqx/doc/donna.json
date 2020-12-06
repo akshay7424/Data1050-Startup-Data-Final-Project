@@ -1,0 +1,425 @@
+[
+  {
+    "repository": "https://github.com/venkatperi/seqx.git",
+    "version": "1.1.1",
+    "files": {
+      "coffee-coverage-loader.coffee": {
+        "objects": {
+          "0": {
+            "7": {
+              "name": "path",
+              "type": "import",
+              "range": [
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  21
+                ]
+              ],
+              "bindingType": "variable",
+              "module": "path",
+              "builtin": true
+            }
+          },
+          "1": {
+            "17": {
+              "name": "coffeeCoverage",
+              "type": "import",
+              "range": [
+                [
+                  1,
+                  17
+                ],
+                [
+                  1,
+                  42
+                ]
+              ],
+              "bindingType": "variable",
+              "module": "coffee-coverage"
+            }
+          },
+          "2": {
+            "14": {
+              "name": "__dirname",
+              "type": "primitive",
+              "range": [
+                [
+                  2,
+                  14
+                ],
+                [
+                  2,
+                  22
+                ]
+              ]
+            }
+          },
+          "10": {
+            "17": {
+              "name": "'istanbul'",
+              "type": "primitive",
+              "range": [
+                [
+                  10,
+                  17
+                ],
+                [
+                  10,
+                  26
+                ]
+              ]
+            }
+          },
+          "11": {
+            "13": {
+              "name": "projectRoot",
+              "type": "primitive",
+              "range": [
+                [
+                  11,
+                  13
+                ],
+                [
+                  11,
+                  23
+                ]
+              ]
+            }
+          },
+          "12": {
+            "12": {
+              "type": "primitive",
+              "range": [
+                [
+                  12,
+                  12
+                ],
+                [
+                  19,
+                  2
+                ]
+              ]
+            }
+          },
+          "20": {
+            "16": {
+              "name": "coverageVar",
+              "type": "primitive",
+              "range": [
+                [
+                  20,
+                  16
+                ],
+                [
+                  20,
+                  26
+                ]
+              ]
+            }
+          },
+          "21": {
+            "16": {
+              "name": "writeOnExit",
+              "type": "primitive",
+              "range": [
+                [
+                  21,
+                  16
+                ],
+                [
+                  21,
+                  26
+                ]
+              ]
+            }
+          },
+          "22": {
+            "12": {
+              "type": "primitive",
+              "range": [
+                [
+                  22,
+                  12
+                ],
+                [
+                  22,
+                  15
+                ]
+              ]
+            }
+          }
+        },
+        "exports": {}
+      },
+      "index.coffee": {
+        "objects": {
+          "0": {
+            "7": {
+              "name": "SeqX",
+              "type": "import",
+              "range": [
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  26
+                ]
+              ],
+              "bindingType": "variable",
+              "path": "./lib/SeqX"
+            }
+          },
+          "2": {
+            "7": {
+              "name": "seqx",
+              "bindingType": "variable",
+              "type": "function",
+              "paramNames": [
+                "opts"
+              ],
+              "range": [
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  31
+                ]
+              ]
+            }
+          },
+          "4": {
+            "12": {
+              "name": "SeqX",
+              "type": "primitive",
+              "range": [
+                [
+                  4,
+                  12
+                ],
+                [
+                  4,
+                  15
+                ]
+              ]
+            }
+          }
+        },
+        "exports": 6
+      },
+      "lib/SeqX.coffee": {
+        "objects": {
+          "0": {
+            "4": {
+              "name": "Q",
+              "type": "import",
+              "range": [
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  14
+                ]
+              ],
+              "bindingType": "variable",
+              "module": "q@^1.4.1"
+            }
+          },
+          "1": {
+            "15": {
+              "type": "primitive",
+              "range": [
+                [
+                  1,
+                  15
+                ],
+                [
+                  1,
+                  44
+                ]
+              ]
+            }
+          },
+          "45": {
+            "0": {
+              "type": "class",
+              "name": "SeqX",
+              "superClass": "EventEmitter",
+              "classProperties": [],
+              "prototypeProperties": [
+                [
+                  53,
+                  16
+                ],
+                [
+                  68,
+                  10
+                ],
+                [
+                  80,
+                  8
+                ],
+                [
+                  91,
+                  9
+                ],
+                [
+                  98,
+                  10
+                ],
+                [
+                  106,
+                  14
+                ]
+              ],
+              "doc": "\nPublic: {SeqX} Execute tasks sequentially.\n\nResult of a task is passed to the next. Returns promises which resolve\nwhen tasks are completed. Fires events when tasks are completed.\n\n# Events\n\n## start\nPublic: Fired when task execution begins.\n\n## task\nPublic: Fired when a new task is added.\n* `fn` {Function} the task which was added.\n\n## completed\nPublic: Fired when a  task is completed. Callback receives the result of the\n task, the task id and the context, if any.\n\n* `result` the result of the previous task, if any\n* `id` {Int} the task's id\n* `context` (optional) context {Object} given when the executor was created\n\n## abort\nPublic: Fired if `abort()` is called on the executor.\n\n\n# Tasks\nTasks are functions. A task can receive one or more arguments, in\n  the following order:\n\n1. `result` The result from the previous task. Can be `undefined`.\n2. `id` The task's id which is an incrementing counter.\n3. `context` An optional context object which is was supplied when the executor was created.\n\n```javascript\nfunction task(result, id, context) {\n  return valueForNextTask;\n }\n```\n\n",
+              "range": [
+                [
+                  45,
+                  0
+                ],
+                [
+                  118,
+                  0
+                ]
+              ]
+            }
+          },
+          "53": {
+            "16": {
+              "name": "constructor",
+              "bindingType": "prototypeProperty",
+              "type": "function",
+              "paramNames": [
+                "opts"
+              ],
+              "range": [
+                [
+                  53,
+                  16
+                ],
+                [
+                  68,
+                  1
+                ]
+              ],
+              "doc": " Public: Create a SeqX sequential executor\n\n* `opts` {Object} options\n   * `manual` {Boolean} If set, don't start immediate task execution\n   * `context` optional context {Object} which is passed to tasks\n\n "
+            }
+          },
+          "68": {
+            "10": {
+              "name": "start",
+              "bindingType": "prototypeProperty",
+              "type": "function",
+              "paramNames": [],
+              "range": [
+                [
+                  68,
+                  10
+                ],
+                [
+                  80,
+                  1
+                ]
+              ],
+              "doc": "Public: Start the executor \n\n"
+            }
+          },
+          "80": {
+            "8": {
+              "name": "add",
+              "bindingType": "prototypeProperty",
+              "type": "function",
+              "paramNames": [
+                "fn"
+              ],
+              "range": [
+                [
+                  80,
+                  8
+                ],
+                [
+                  91,
+                  1
+                ]
+              ],
+              "doc": " Public: Add the given task(s) to the queue\n\n* `fn...` a {Function} or array of {Function}s to add to the to add to the queue\n\nReturns {Promise} which resolves when the task(s) complete\n\n "
+            }
+          },
+          "91": {
+            "9": {
+              "name": "addn",
+              "bindingType": "prototypeProperty",
+              "type": "function",
+              "paramNames": [
+                "fn",
+                "n"
+              ],
+              "range": [
+                [
+                  91,
+                  9
+                ],
+                [
+                  98,
+                  1
+                ]
+              ],
+              "doc": " Public: Add the given task `n` times\n\n* `fn` {Function} task \n* `n ` {Number} of time to execute the task\n\nReturns {Promise} which resolves the last iteration is complete\n\n "
+            }
+          },
+          "98": {
+            "10": {
+              "name": "abort",
+              "bindingType": "prototypeProperty",
+              "type": "function",
+              "paramNames": [],
+              "range": [
+                [
+                  98,
+                  10
+                ],
+                [
+                  106,
+                  1
+                ]
+              ],
+              "doc": "Public: Abort pending tasks. Executor will throw an exeption\nwhich can be caught with a promise .fail() handler\n\n"
+            }
+          },
+          "106": {
+            "14": {
+              "name": "actualAdd",
+              "bindingType": "prototypeProperty",
+              "type": "function",
+              "paramNames": [
+                "fn"
+              ],
+              "range": [
+                [
+                  106,
+                  14
+                ],
+                [
+                  118,
+                  0
+                ]
+              ],
+              "doc": " Private: Adds the task to the seq queue\n\n* `fn` {Function} task \n\n "
+            }
+          }
+        },
+        "exports": 119
+      }
+    }
+  }
+]
