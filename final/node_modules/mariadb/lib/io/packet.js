@@ -3,6 +3,7 @@
 const Errors = require('../misc/errors');
 const Iconv = require('iconv-lite');
 const Long = require('long');
+const moment = require('moment-timezone');
 
 /**
  * Object to easily parse buffer.
@@ -183,27 +184,22 @@ class Packet {
   }
 
   readInt64() {
-    const first = this.readInt32();
-    const second = this.readInt32();
-
-    const long = new Long(first, second, false);
-    if (long.isNegative()) {
-      if (long.lessThan(-9007199254740991)) return long;
-    } else if (long.greaterThan(9007199254740991)) return long;
-
-    return long.toNumber();
-  }
-
-  readUInt64() {
-    const first = this.readInt32();
-    const second = this.readInt32();
-
-    const long = new Long(first, second, true);
-    if (long.isNegative()) {
-      if (long.lessThan(-9007199254740991)) return long;
-    } else if (long.greaterThan(9007199254740991)) return long;
-
-    return long.toNumber();
+    // could use readBigInt64LE when support would be 10.20+
+    const val =
+      this.buf[this.pos + 4] +
+      this.buf[this.pos + 5] * 2 ** 8 +
+      this.buf[this.pos + 6] * 2 ** 16 +
+      (this.buf[this.pos + 7] << 24);
+    const vv =
+      (BigInt(val) << 32n) +
+      BigInt(
+        this.buf[this.pos] +
+          this.buf[this.pos + 1] * 2 ** 8 +
+          this.buf[this.pos + 2] * 2 ** 16 +
+          this.buf[this.pos + 3] * 2 ** 24
+      );
+    this.pos += 8;
+    return vv;
   }
 
   readUnsignedLength() {
@@ -216,7 +212,8 @@ class Packet {
       case 0xfd:
         return this.readUInt24();
       case 0xfe:
-        return this.readUInt64();
+        // limitation to BigInt signed value
+        return Number(this.readInt64());
       default:
         return type;
     }
@@ -259,9 +256,25 @@ class Packet {
       case 0xfd:
         return this.readUInt24();
       case 0xfe:
-        return this.readInt64();
+        return Number(this.readInt64());
       default:
         return type;
+    }
+  }
+
+  readSignedLengthBigInt() {
+    const type = this.buf[this.pos++];
+    switch (type) {
+      case 0xfb:
+        return null;
+      case 0xfc:
+        return BigInt(this.readUInt16());
+      case 0xfd:
+        return BigInt(this.readUInt24());
+      case 0xfe:
+        return this.readInt64();
+      default:
+        return BigInt(type);
     }
   }
 
@@ -283,9 +296,15 @@ class Packet {
     return Iconv.decode(this.buf.slice(this.pos - len, this.pos), encoding);
   }
 
-  readLongLengthEncoded(supportBigNumbers, bigNumberStrings, unsigned) {
+  readLongLengthEncoded(supportBigInt, supportBigNumbers, bigNumberStrings, unsigned) {
     const len = this.readUnsignedLength();
     if (len === null) return null;
+
+    if (supportBigInt) {
+      const str = this.buf.toString('ascii', this.pos, this.pos + len);
+      this.pos += len;
+      return BigInt(str);
+    }
 
     let result = 0;
     let negate = false;
@@ -313,13 +332,13 @@ class Packet {
     return val;
   }
 
-  readDecimalLengthEncoded(supportBigNumbers, bigNumberStrings) {
+  readDecimalLengthEncoded(bigNumberStrings) {
     const len = this.readUnsignedLength();
     if (len === null) return null;
 
     this.pos += len;
     let str = this.buf.toString('ascii', this.pos - len, this.pos);
-    return bigNumberStrings ? str : parseFloat(str);
+    return bigNumberStrings ? str : +str;
   }
 
   readDate() {
@@ -356,7 +375,9 @@ class Packet {
     if (str.startsWith('0000-00-00 00:00:00')) return null;
 
     if (opts.tz) {
-      return new Date(opts.tz(str).clone().tz(opts.localTz).format('YYYY-MM-DD HH:mm:ss.SSSSSS'));
+      return new Date(
+        moment.tz(str, opts.tz).clone().tz(opts.localTz).format('YYYY-MM-DD HH:mm:ss.SSSSSS')
+      );
     }
     return new Date(str);
   }
@@ -383,48 +404,9 @@ class Packet {
 
   readFloatLengthCoded() {
     const len = this.readUnsignedLength();
-
-    if (len === 0 || !len) {
-      return len;
-    }
-
-    let result = 0;
-    let end = this.pos + len;
-    let factor = 1;
-    let dotfactor = 1;
-    let resultDot = 0;
-    let charCode = 0;
-
-    //-
-    if (this.buf[this.pos] === 45) {
-      this.pos++;
-      factor = -1;
-    }
-
-    //+
-    if (this.buf[this.pos] === 43) {
-      this.pos++; // just ignore
-    }
-
-    while (this.pos < end) {
-      charCode = this.buf[this.pos];
-      if (charCode === 46) {
-        //dot
-        this.pos++;
-
-        dotfactor = 1;
-        while (this.pos < end) {
-          dotfactor *= 10;
-          resultDot *= 10;
-          resultDot += this.buf[this.pos++] - 48;
-        }
-      } else {
-        result *= 10;
-        result += this.buf[this.pos++] - 48;
-      }
-    }
-
-    return factor * (result + resultDot / dotfactor);
+    if (len === null) return null;
+    this.pos += len;
+    return +this.buf.toString('ascii', this.pos - len, this.pos);
   }
 
   skipLengthCodedNumber() {

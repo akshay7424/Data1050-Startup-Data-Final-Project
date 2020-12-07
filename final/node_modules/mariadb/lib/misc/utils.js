@@ -122,12 +122,15 @@ module.exports.escape = (opts, info, value) => {
   switch (typeof value) {
     case 'boolean':
       return value ? 'true' : 'false';
+    case 'bigint':
     case 'number':
       return '' + value;
     case 'object':
       if (Object.prototype.toString.call(value) === '[object Date]') {
         return opts.tz
-          ? CommonText.getTimezoneDate(value, opts)
+          ? opts.tz === 'Etc/UTC'
+            ? CommonText.getUtcDate(value, opts)
+            : CommonText.getTimezoneDate(value, opts)
           : CommonText.getLocalDate(value, opts);
       } else if (Buffer.isBuffer(value)) {
         let stValue;
@@ -142,12 +145,12 @@ module.exports.escape = (opts, info, value) => {
       } else if (Long.isLong(value)) {
         return value.toString();
       } else if (Array.isArray(value)) {
-        let out = '(';
+        let out = opts.arrayParenthesis ? '(' : '';
         for (let i = 0; i < value.length; i++) {
           if (i !== 0) out += ',';
           out += this.escape(opts, info, value[i]);
         }
-        out += ')';
+        if (opts.arrayParenthesis) out += ')';
         return out;
       } else {
         if (

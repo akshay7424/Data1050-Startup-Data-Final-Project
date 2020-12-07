@@ -49,16 +49,39 @@
         </ul>
       </div>
     </nav>
+    <img src="./img/test_scores.png" alt="banner img" class="banner_img" />
     <p class="description">
-      Looking at forecasts of startup companies using machine learning is a
-      relevant yet largely untouched field. Currently, venture capital firms use
-      intuition, financial projections, and personal connections to determine
-      which companies receive seed money. Understandably, there is high risk and
-      uncertainty associated with venture capital where only a handful of
-      companies become unicorns (> $1bn valuation) with successful exits. The
-      goal of this machine learning project is to shed some light into what
-      variables contribute to a company’s success, outside of financials, to
-      reduce the randomness and personal bias in venture capital investment.
+      The baseline accuracy of the model was 64.6%, since roughly a third
+      of the startups closed and two thirds succeeded. 
+      <br />
+      <br />
+      Support vector classifier yielded an average test score of 84.6% with
+      a standard deviation of 2.2%. The optimal parameter combination with C
+      as 10 and gamma as 0.01 resulted in a test score of 88.6%. The best test
+      score was 10.7 standard deviations above the baseline accuracy score. 
+      <br />
+      <br />
+      K-neighbors classifier performed slightly worse across the ten random states 
+      with a mean test score of 76.8% and a standard deviation of 2.9%. Tuning 
+      the n_neighbors parameter showed that n_neighbors of five produced the highest
+      test score, 82.2%, which was 6.1 standard deviations above the baseline accuracy.
+      <br />
+      <br />
+      Finally, logistic regression fared the worst with a mean test score at 74.9% and
+      standard deviation of 2.4%. Logistic regression was run with l2 regularization
+      and a max iteration of 10,000. After tuning the C parameter, the best test score 
+      was 79.5% with C at 0.1. This was 6.2 standard deviations above the baseline.
+    </p>
+    <img src="./img/shap_summary.png" alt="banner img" class="banner_img" />
+    <p class="description">
+      Local feature importance was observed using a linear explainer for the logistic
+      regression model, shown in figure 5. Interestingly, relationships took the top
+      spot for feature importance. This notion seems to support the original theory 
+      positing that the venture capital industry relies heavily on personal connections 
+      in absence of financial information. Furthermore, two features related to milestones 
+      were in the top three most important features. This is natural since a startup hitting 
+      milestones would generally indicate some form of business successes. Interestingly, 
+      latitude was fourth on the list while longitude was missing.
     </p>
     <div id="stackedareachart">
       <svg style="width: 400px; height: 400px"></svg>

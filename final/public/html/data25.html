@@ -50,8 +50,33 @@
         </ul>
       </div>
     </nav>
+    <iframe src="html/heatmap_CA.html" width="800" height="800"></iframe>
+    <button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
+    <button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
+    <button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
+    <button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+
+    <div id="Home" class="tabcontent">
+      <h3>Home</h3>
+      <p>Home is where the heart is..</p>
+    </div>
+
+    <div id="News" class="tabcontent">
+      <h3>News</h3>
+      <p>Some news this fine day!</p>
+    </div>
+
+    <div id="Contact" class="tabcontent">
+      <h3>Contact</h3>
+      <p>Get in touch, or swing by for a cup of coffee.</p>
+    </div>
+
+    <div id="About" class="tabcontent">
+      <h3>About</h3>
+      <p>Who we are and what we do.</p>
+    </div>
     <p class="description">
-      Looking at forecasts of startup companies using machine learning is a
+      Looking at hello of startup companies using machine learning is a
       relevant yet largely untouched field. Currently, venture capital firms use
       intuition, financial projections, and personal connections to determine
       which companies receive seed money. Understandably, there is high risk and
