@@ -22,7 +22,6 @@ const comments = require("./routes/comments");
 const login = require("./routes/login");
 const register = require("./routes/register");
 const logout = require("./routes/logout");
-const profile = require("./routes/profile");
 const search = require("./routes/search");
 const startup = require("./routes/startup");
 
@@ -68,7 +67,6 @@ app.use("/comments", comments);
 app.use("/login", login.router);
 app.use("/register", register);
 app.use("/logout", logout);
-app.use("/profile", profile);
 app.use("/search", search);
 app.use("/startup", startup);
 
