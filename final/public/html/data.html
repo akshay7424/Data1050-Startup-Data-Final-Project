@@ -55,13 +55,13 @@
       relevant yet largely untouched field. Currently, venture capital firms use
       intuition, financial projections, and personal connections to determine
       which companies receive seed money. Understandably, there is high risk and
-      uncertainty associated with venture capital where only a handful have successful
-      exits and even fewer become unicorns (> $1bn valuation). The
+      uncertainty associated with venture capital where only a handful have
+      successful exits and even fewer become unicorns (> $1bn valuation). The
       goal of this machine learning project is to shed some light into what
       variables contribute to a company’s success, outside of financials, to
       reduce the randomness and personal bias in venture capital investment.
     </p>
-
+    <h2>Age of startups at first milestone</h2>
     <div id="discretebarchart">
       <svg style="width: 500px; height: 500px"></svg>
     </div>
@@ -70,16 +70,15 @@
       data_discretebarchart = [
         {
           values: [
-            { x: 0, y: -1.7497654730546974 },
-            { x: 1, y: 0.34268040332750216 },
-            { x: 2, y: 1.153035802563644 },
-            { x: 3, y: -0.25243603652138985 },
-            { x: 4, y: 0.9813207869512316 },
-            { x: 5, y: 0.5142188413943821 },
-            { x: 6, y: 0.22117966922140045 },
-            { x: 7, y: -1.0700433305682933 },
-            { x: 8, y: -0.18949583082317534 },
-            { x: 9, y: 0.25500144427338167 },
+            { x: -15, y: 10 },
+            { x: -10, y: 10 },
+            { x: 5, y: 15 },
+            { x: 0, y: 240 },
+            { x: 5, y: 370 },
+            { x: 10, y: 120 },
+            { x: 15, y: 25 },
+            { x: 20, y: 14 },
+            { x: 25, y: 10 },
           ],
           key: "Serie 1",
           yAxis: "1",
@@ -104,31 +103,66 @@
           .call(chart);
       });
     </script>
-
+    <h2>Number of startups by industry</h2>
     <div>
       <img src="./img/eda_1.png" alt="banner img" class="banner_img" />
       <p class="description">
-        This figure shows a histogram of industries the startups are in.
-        The industries with the highest number of startups tend to be 
-        related to technology specifically software, and mobile. Entertainment
-        and advertising startups are also relatively common.
+        This figure shows a histogram of industries the startups are in. The
+        industries with the highest number of startups tend to be related to
+        technology specifically software, and mobile. Entertainment and
+        advertising startups are also relatively common.
       </p>
+
+      <h2>Total funding by industry (in 10 mil.)</h2>
       <img src="./img/eda_4.png" alt="banner img" class="banner_img" />
       <p class="description">
-        Plot of total funding by industry. According to this figure, mobile recieves
-        many times more funding than software. This is surprising since there are
-        approximately twice as many software startups in the dataset. Additionally, 
-        even transportation and biotech seemed to outshadow teachnology in terms of
-        overall funding.
+        Plot of total funding by industry. According to this figure, mobile
+        recieves many times more funding than software. This is surprising since
+        there are approximately twice as many software startups in the dataset.
+        Additionally, even transportation and biotech seemed to outshadow
+        teachnology in terms of overall funding.
       </p>
+      <h2>Success or failure? By location</h2>
       <img src="./img/eda_2.png" alt="banner img" class="banner_img" />
-      <p class='description'>
+      <p class="description">
         A map showing successful and failed startups based on their location.
         The plot was created using latitude and longitude data along with the
         target variable. The green points are successful startups and the red
-        points are failed. Most startups are concentrated in California, New York,
-        Massachusetts, Washington, and Texas.
-      </p>   
+        points are failed. Most startups are concentrated in California, New
+        York, Massachusetts, Washington, and Texas.
+      </p>
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+      mybutton = document.getElementById("myBtn");
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
+    </script>
+
+    <!-- footer -->
+    <div class="footer">
+      <p><b>Created by Harry Tasha Akshay </b> @DATA1050</p>
     </div>
   </body>
 </html>

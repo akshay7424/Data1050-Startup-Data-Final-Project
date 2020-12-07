@@ -37,7 +37,7 @@
           <a
             style="text-decoration: none"
             class="btn btn-light navbar-btn"
-            href="./data25"
+            href="./data27"
             >&lt;</a
           >
           <a
@@ -51,36 +51,39 @@
     </nav>
     <img src="./img/test_scores.png" alt="banner img" class="banner_img" />
     <p class="description">
-      The baseline accuracy of the model was 64.6%, since roughly a third
-      of the startups closed and two thirds succeeded. 
+      The baseline accuracy of the model was 64.6%, since roughly a third of the
+      startups closed and two thirds succeeded.
       <br />
       <br />
-      Support vector classifier yielded an average test score of 84.6% with
-      a standard deviation of 2.2%. The optimal parameter combination with C
-      as 10 and gamma as 0.01 resulted in a test score of 88.6%. The best test
-      score was 10.7 standard deviations above the baseline accuracy score. 
+      Support vector classifier yielded an average test score of 84.6% with a
+      standard deviation of 2.2%. The optimal parameter combination with C as 10
+      and gamma as 0.01 resulted in a test score of 88.6%. The best test score
+      was 10.7 standard deviations above the baseline accuracy score.
       <br />
       <br />
-      K-neighbors classifier performed slightly worse across the ten random states 
-      with a mean test score of 76.8% and a standard deviation of 2.9%. Tuning 
-      the n_neighbors parameter showed that n_neighbors of five produced the highest
-      test score, 82.2%, which was 6.1 standard deviations above the baseline accuracy.
+      K-neighbors classifier performed slightly worse across the ten random
+      states with a mean test score of 76.8% and a standard deviation of 2.9%.
+      Tuning the n_neighbors parameter showed that n_neighbors of five produced
+      the highest test score, 82.2%, which was 6.1 standard deviations above the
+      baseline accuracy.
       <br />
       <br />
-      Finally, logistic regression fared the worst with a mean test score at 74.9% and
-      standard deviation of 2.4%. Logistic regression was run with l2 regularization
-      and a max iteration of 10,000. After tuning the C parameter, the best test score 
-      was 79.5% with C at 0.1. This was 6.2 standard deviations above the baseline.
+      Finally, logistic regression fared the worst with a mean test score at
+      74.9% and standard deviation of 2.4%. Logistic regression was run with l2
+      regularization and a max iteration of 10,000. After tuning the C
+      parameter, the best test score was 79.5% with C at 0.1. This was 6.2
+      standard deviations above the baseline.
     </p>
     <img src="./img/shap_summary.png" alt="banner img" class="banner_img" />
     <p class="description">
-      Local feature importance was observed using a linear explainer for the logistic
-      regression model, shown in figure 5. Interestingly, relationships took the top
-      spot for feature importance. This notion seems to support the original theory 
-      positing that the venture capital industry relies heavily on personal connections 
-      in absence of financial information. Furthermore, two features related to milestones 
-      were in the top three most important features. This is natural since a startup hitting 
-      milestones would generally indicate some form of business successes. Interestingly, 
+      Local feature importance was observed using a linear explainer for the
+      logistic regression model, shown in figure 5. Interestingly, relationships
+      took the top spot for feature importance. This notion seems to support the
+      original theory positing that the venture capital industry relies heavily
+      on personal connections in absence of financial information. Furthermore,
+      two features related to milestones were in the top three most important
+      features. This is natural since a startup hitting milestones would
+      generally indicate some form of business successes. Interestingly,
       latitude was fourth on the list while longitude was missing.
     </p>
     <div id="stackedareachart">
@@ -152,5 +155,37 @@
           .call(chart);
       });
     </script>
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+      mybutton = document.getElementById("myBtn");
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
+    </script>
+    <!-- footer -->
+    <div class="footer">
+      <p><b>Created by Harry Tasha Akshay </b> @DATA1050</p>
+    </div>
   </body>
 </html>
