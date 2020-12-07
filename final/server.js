@@ -34,6 +34,7 @@ var creds = require("./routes/creds");
 var data = require("./routes/data");
 var data2 = require("./routes/data2");
 var data25 = require("./routes/data25");
+var data27 = require("./routes/data27");
 var data3 = require("./routes/data3");
 var d3 = require("d3");
 
@@ -83,6 +84,7 @@ app.use("/creds", creds);
 app.use("/data", data);
 app.use("/data2", data2);
 app.use("/data25", data25);
+app.use("/data27", data27);
 app.use("/data3", data3);
 
 app.use(express.static("views"));

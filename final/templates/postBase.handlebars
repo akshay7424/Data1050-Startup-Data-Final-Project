@@ -1,0 +1,291 @@
+<article id="{{postID}}" class="{{postType}} singlePostContainer">
+
+    <div class="postLeft">
+        <button class="likeButton postLeftIconContainer tabHighlightable" tabindex="0"
+                data-post-id="{{postID}}" data-likes="{{likeCount}}" type="button"
+                aria-pressed="false" aria-label="Like Post">
+                <span class="insideTabHighlightable" tabindex="-1">
+                    <svg class="likeSymbol postLeftIcon" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 22 22">
+                        <rect x="18" y="9" width="4" height="13"/>
+                        <path d="M7.6,1.6a1,1,0,0,0-.41,1.09L8.54,7.74A1,1,0,0,1,7.58,9H1a1,1,0,0,0-1,1v3.88l0,.24,1.78,7.12a1,1,0,0,0,1,.76H16V9L10,0Z"/>
+                    </svg>
+                </span>
+        </button>
+        <span class="likeCount postLeftNumbers">
+            {{#compactNumber likeCount}}{{/compactNumber}}
+        </span>
+        <button class="commentButton postLeftIconContainer tabHighlightable" tabindex="0"
+                type="button">
+                <span class="insideTabHighlightable" tabindex="-1">
+                    <svg class="commentSymbol postLeftIcon" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 22 22">
+                        <path d="M17,22V16h1a4,4,0,0,0,4-4V4a4,4,0,0,0-4-4H4A4,4,0,0,0,0,4v8a4,4,0,0,0,4,4h6l6,6"/>
+                    </svg>
+                </span>
+        </button>
+        <span class="commentCount postLeftNumbers">
+            {{#compactNumber commentCount}}{{/compactNumber}}
+        </span>
+    </div>
+
+    <div class="postCenter">
+        <h3 class="postTitle">
+            <a class="postTitleLink tabHighlightable" href="/posts/{{postID}}" tabindex="0">
+                <span class="insideTabHighlightable insideButText" tabindex="-1">
+                    {{postTitle}}
+                </span>
+            </a>
+        </h3>
+
+        {{#ifEqual postType "textPost"}}
+            {{#if postBody}}
+                <p class="postBody mainFeedPostBodyClampedPreview"> {{postBody}} </p>
+            {{/if}}
+
+        {{else ifEqual postType "imagePost"}}
+            <div class="postCarouselOuterWrapper">
+                {{#ifLongerThanOne postImagesArray}}
+                    <div class="postCarouselWrapper">
+                        {{#each postImagesArray}}
+                            <div class="postCarouselSlideContainer right">
+                                <div class="postCarouselSlideInnerContainerForCentering">
+                                    <img class="postCarouselImage"
+                                         src="{{this}}" alt="An Image">
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    <button class="postCarouselButtonPrev tabHighlightable"
+                            aria-label="Previous Image" type="button">
+                        <span class="insideTabHighlightable darkerShadow">
+                        </span>
+                    </button>
+                    <button class="postCarouselButtonNext tabHighlightable"
+                            aria-label="Next Image" type="button">
+                        <span class="insideTabHighlightable darkerShadow">
+                        </span>
+                    </button>
+                    <div class="postCarouselPageIndicators">
+                        {{#each postImagesArray}}
+                            <div class="postCarouselPips"></div>
+                        {{/each}}
+                    </div>
+                {{else}}
+                    <div class="postIndividualImage">
+                        <img class="postCarouselImage"
+                             src="{{postImagesArray.[0]}}" alt="An Image">
+                    </div>
+                {{/ifLongerThanOne}}
+            </div>
+
+        {{else ifEqual postType "linkPost"}}
+            <div class="postLink">
+                <a class="tabHighlightable" href="{{postLink}}" tabindex="0">
+                    <span class="insideTabHighlightable insideButText" tabindex="-1">
+                        {{postLink}}
+                    </span>
+                </a>
+            </div>
+
+        {{else ifEqual postType "documentPost"}}
+            <div class="postDocumentPreviewWrapper">
+                <div class="postDocumentPreviewTop">
+                    <div class="postDocumentPreviewToolbar">
+                        {{postDocumentInfo.documentTitle}}
+                        <div class="postDocumentIconContainerWrapper">
+                            <a class="downloadButton postDocumentIconContainer tabHighlightable zToolTipRelative"
+                               tabindex="0" href="{{postDocumentInfo.documentUrl}}" download>
+                                <span class="zToolTip">Download</span>
+                                <span class="insideTabHighlightable" tabindex="-1">
+                                    <svg class="downloadSymbol postDocumentIcon"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 22 22">
+                                        <path d="M19,15v4H3V15a1,1,0,0,0-1-1H1a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V15a1,1,0,0,0-1-1H20A1,1,0,0,0,19,15Z"/><path
+                                            d="M17.59,8H14V1a1,1,0,0,0-1-1H9A1,1,0,0,0,8,1V8H4.41a1,1,0,0,0-.7,1.71l6.58,6.58a1,1,0,0,0,1.42,0l6.58-6.58A1,1,0,0,0,17.59,8Z"/>
+                                    </svg>
+                                </span>
+                            </a>
+                            <button class="togglePreviewButton postDocumentIconContainer tabHighlightable zToolTipRelative"
+                                    tabindex="0" type="button">
+                                <span class="zToolTip">Open Preview</span>
+                                <span class="insideTabHighlightable" tabindex="-1">
+                                    <svg class="openPreviewSymbol postDocumentIcon"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 22 16">
+                                        <path d="M21.6,6.54C20.26,4.23,17,0,11,0S1.74,4.23.4,6.54a2.88,2.88,0,0,0,0,2.92C1.74,11.77,5,16,11,16s9.26-4.23,10.6-6.54A2.88,2.88,0,0,0,21.6,6.54ZM11,13a5,5,0,1,1,5-5A5,5,0,0,1,11,13Z"/>
+                                        <circle cx="11" cy="8" r="2.5"/>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <iframe class="postDocumentPreview"
+                        data-src-is-loaded="false"
+                        data-src-buffer="{{postDocumentInfo.documentUrl}}"
+                        src=""></iframe>
+                <div class="postDocumentPreviewBottom"></div>
+            </div>
+
+        {{else ifEqual postType "pollPost"}}
+            <div class="postPollWrapper">
+                <form id="formForPollPost{{postID}}" class="postPollForm" autocomplete="off">
+                    <div class="postPollInformationWrapper"
+                         data-total-votes="{{postPollInfo.totalVotes}}" data-post-id="{{postID}}">
+                        {{#each postPollInfo.postPollOptions}}
+                            <div class="postPollOptionWrapper">
+                                {{#ifFirstTrueSecondFalse ../postPollInfo.pollIsOpen
+                                                          ../postPollInfo.userHasVoted}}
+                                    <input type="radio" class="postPollOptionRadio"
+                                           id="pollPost{{../postID}}option{{this.index}}"
+                                           name="pollPost{{../postID}}" value="{{this.index}}"
+                                           tabindex="0">
+                                    <label for="pollPost{{../postID}}option{{this.index}}">{{this.option}}</label>
+                                {{/ifFirstTrueSecondFalse}}
+                                <div class="postPollOptionNumbers">{{#compactNumber
+                                        this.votes}}{{/compactNumber}}</div>
+
+                                <span class="postPollOptionText">{{this.option}}</span>
+                                <div class="postPollOptionBar" data-votes="{{this.votes}}"></div>
+                            </div>
+                        {{/each}}
+                        {{#ifFirstTrueSecondFalse postPollInfo.pollIsOpen
+                                                  postPollInfo.userHasVoted}}
+                            <button class="postPollVoteButton tabHighlightable" type="button"
+                                    tabindex="0" aria-label="Save Draft">
+                            <span class="insideTabHighlightable" tabindex="-1">
+                                Vote
+                            </span>
+                            </button>
+                        {{/ifFirstTrueSecondFalse}}
+                    </div>
+                </form>
+            </div>
+
+        {{/ifEqual}}
+
+        {{>mainFeedPostTagContainer tagsArray=tagsArray}}
+        <span class="postProvenance">
+            Posted
+            <span class="timeAgo zTooltipRelative tabHighlightable" tabindex="0">
+                <span class="zToolTip">
+                    {{#absoluteTime postTimestamp}}{{/absoluteTime}}
+                </span>
+                <span class="insideTabHighlightable insideButText" tabindex="-1">
+                    {{#relativeTimeVsNow postTimestamp}}{{/relativeTimeVsNow}}
+                </span>
+            </span>
+            by
+            <a class="username tabHighlightable" href="/user/{{opID}}" id="username"
+               tabindex="0">
+                <span class="insideTabHighlightable insideButText" tabindex="-1">
+                    {{#ifEqual opID userID}}
+                        Me
+                    {{else}}
+                        {{opName}}
+                        '{{opYear}}
+                    {{/ifEqual}}
+                </span>
+                <div class="opBio" id="opBio">
+                        <div class="userNameText">
+                            user/{{opName}} '{{opYear}}
+                        </div>
+                    {{!-- maybe show badges here? --}}
+                    <div class="userInfo">
+                        Concentration:
+                        <br>
+                        <p class="userInfoText">
+                            {{opConcentration}}
+                        </p>
+                        Bio:
+                        <br>
+                        <p class="userInfoText">
+                            {{opBio}}
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </span>
+    </div>
+
+    <div class="postRight">
+        <button class="postDropdownIconContainer tabHighlightable" tabindex="0"
+                aria-haspopup="true" aria-expanded="false" type="button">
+                <span class="insideTabHighlightable forJSDropdownClickClass" tabindex="-1">
+                    <svg class="dropdownSymbol" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 10 6">
+                        <path d="M5,6a1,1,0,0,1-.71-.29l-4-4A1,1,0,0,1,1.71.29L5,3.59,8.29.29A1,1,0,1,1,9.71,1.71l-4,4A1,1,0,0,1,5,6Z"/>
+                    </svg>
+                </span>
+        </button>
+        <div class="dropdownMenu">
+            <div class="shareButton dropdownMenuOption tabHighlightable enterToClick"
+                 tabindex="0">
+                    <span class="insideTabHighlightable noSelect" tabindex="-1">
+                        <svg class="shareSymbol dropdownMenuOptionIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 22 20.74">
+                            <path d="M12.67.26A1,1,0,0,0,11,1V4.74c-7,.89-11,7-11,16,2-5,7-8,11-8v3.74a1,1,0,0,0,1.67.74L22,8.74Z"/>
+                        </svg>
+                        <span class="dropdownMenuOptionText"> Share </span>
+                    </span>
+            </div>
+            <div class="saveButton dropdownMenuOption tabHighlightable enterToClick"
+                 tabindex="0">
+                    <span class="insideTabHighlightable noSelect" tabindex="-1">
+                        <svg class="saveAddSymbol dropdownMenuOptionIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 16 22.33">
+                            <path d="M14,0H2A2,2,0,0,0,0,2V21.33a1,1,0,0,0,1.63.78L7.37,17.5a1,1,0,0,1,1.26,0l5.74,4.61A1,1,0,0,0,16,21.33V2A2,2,0,0,0,14,0ZM12,10H10a1,1,0,0,0-1,1v2a1,1,0,0,1-2,0V11a1,1,0,0,0-1-1H4A1,1,0,0,1,4,8H6A1,1,0,0,0,7,7V5A1,1,0,0,1,9,5V7a1,1,0,0,0,1,1h2a1,1,0,0,1,0,2Z"/>
+                        </svg>
+                        <span class="dropdownMenuOptionText"> Save Post </span>
+                    </span>
+            </div>
+            <div class="reportButton dropdownMenuOption tabHighlightable enterToClick"
+                 tabindex="0">
+                    <span class="insideTabHighlightable noSelect" tabindex="-1">
+                        <svg class="reportSymbol dropdownMenuOptionIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="-2 0 24.33 22">
+                            <path
+                                    d="M17.5,8.63a1,1,0,0,1,0-1.26l4.61-5.74A1,1,0,0,0,21.33,0H2A2,2,0,0,0,0,2V21a1,1,0,0,0,1,1H2a1,1,0,0,0,1-1V16H21.33a1,1,0,0,0,.78-1.63Z"/>
+                            </svg>
+                        <span class="dropdownMenuOptionText"> Report </span>
+                    </span>
+            </div>
+            {{#ifEqual postType "textPost"}}
+                <div class="editButton dropdownMenuOption tabHighlightable enterToClick"
+                     tabindex="0" onclick="$('#editPost{{postID}}').modal('show');">
+                    <span class="insideTabHighlightable noSelect" tabindex="-1">
+                        <svg class="editSymbol dropdownMenuOptionIcon"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.02 22">
+                            <path d="M19.44,4.12l-9.07,9.06a2.94,2.94,0,0,1-1.28.76l-2.51.73a1,1,0,0,1-1.24-1.25l.74-2.49a3,3,0,0,1,.75-1.28L15.9.59a2,2,0,0,1,2.83,0l.71.7A2,2,0,0,1,19.44,4.12Z"/>
+                            <path d="M1.5,4H9.66l3-3H1.5a1.5,1.5,0,0,0,0,3Z"/>
+                            <path d="M11.5,19H1.5a1.5,1.5,0,0,0,0,3h10a1.5,1.5,0,0,0,0-3Z"/>
+                            <path d="M19.2,7.18,16.38,10H18.5a1.5,1.5,0,0,0,.7-2.82Z"/>
+                            <path d="M5.42,8.24,6.66,7H1.5a1.5,1.5,0,0,0,0,3H4.29A5,5,0,0,1,5.42,8.24Z"/>
+                            <path d="M18.5,13H13.38l-1.59,1.6a5,5,0,0,1-2.15,1.26L9.17,16H18.5a1.5,1.5,0,0,0,0-3Z"/>
+                            <path d="M3.9,15.5A3,3,0,0,1,3.4,13H1.5a1.5,1.5,0,0,0,0,3H4.37A3.2,3.2,0,0,1,3.9,15.5Z"/>
+                        </svg>
+                        <span class="dropdownMenuOptionText"> Edit Post </span>
+                    </span>
+                </div>
+            {{/ifEqual}}
+            <div class="deleteButton dropdownMenuOption tabHighlightable enterToClick"
+                 tabindex="0" onclick="$('#deletePost{{postID}}').modal('show');">
+                <span class="insideTabHighlightable noSelect" tabindex="-1">
+                    <svg class="deleteSymbol dropdownMenuOptionIcon"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.61 22.06">
+                        <path d="M.1,8.6l1,11.63a2,2,0,0,0,2,1.83H13.54a2,2,0,0,0,2-1.83l1-11.63A.49.49,0,0,0,16,8.06H.6A.5.5,0,0,0,.1,8.6Zm11.33,11,.34-9.49h2.31l-.57,9.53a.56.56,0,0,1-.59.47H12A.55.55,0,0,1,11.43,19.55ZM7.15,10.06H9.46l-.11,9.51a.55.55,0,0,1-.59.49h-.9a.55.55,0,0,1-.59-.49Zm-4.61,0H4.85l.34,9.49a.55.55,0,0,1-.59.51H3.7a.56.56,0,0,1-.59-.47Z"/><path
+                        d="M16.59,5.34,16,3.68A1,1,0,0,0,15.09,3H11.31V1a1,1,0,0,0-1-1h-4a1,1,0,0,0-1,1V3H1.53a1,1,0,0,0-.95.68L0,5.34A.5.5,0,0,0,.5,6H16.11A.5.5,0,0,0,16.59,5.34Z"/>
+                    </svg>
+                    <span class="dropdownMenuOptionText"> Delete Post </span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    {{> deletePostModal}}
+
+</article>

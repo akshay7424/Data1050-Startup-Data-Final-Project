@@ -1,0 +1,71 @@
+
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Add User
+            </div>
+            <div class="para-heading">
+                <br />
+                  <br />
+                   <br />
+                   <h1>
+                       Search Result
+                   </h1>
+            </div>
+            <div class="startup_details">
+                <h1>
+                    Name of Startup:
+                    {{name}}</h1>
+                    <h2>
+                        State: {{state}}
+                    </h2>
+                    <h2>
+                        City: {{city}}
+                    </h2>
+                    <h2>
+                        Industry: {{category}}
+                    </h2>
+                    <h2>
+                        Total funding rounds: {{fundingTotal}}
+                    </h2>
+                    <h2>
+                        Number of investors:  {{numInvestors}}
+                    </h2>
+                    <h2>
+                        Founded Date: {{founded}}
+                    </h2>
+                
+            </div>
+            <div>
+                <img src="./img/startup_img.png" alt="banner img"  class="banner_img" />
+            </div>
+
+            <div class="para">
+                <p >The project explores the potential success of startup companies in the
+            U.S. by examining key features that economically and financially impact
+            these companies. Currently, venture capital firms use intuition, financial
+            projections, and personal connections to determine which companies receive
+            seed money. Understandably, there is high risk and uncertainty associated
+            with venture capital where only a handful of companies become unicorns (>
+            $1bn valuation) with successful exits. The goal of this machine learning
+            project is to shed some light into what variables contribute to a
+            company’s success, outside of financials, to reduce the randomness and
+            personal bias in venture capital investment.</p>
+        <p class="font-italic">Dataset: The dataset is retrieved from Kaggle, named
+            <a href="">'CAX_Startup_Data.csv'</a> <a href="https://bootstrapious.com" class="text-white">
+            </a>
+        </p>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+{{!-- Not sure where this goes. Displays errors from adding user --}}
+
+{{# if errors }}
+{{# each errors }}
+<p class="alert alert-danger">{{ this.msg }}</p>
+{{/each}}
+{{/if}}

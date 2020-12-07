@@ -1,0 +1,63 @@
+
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Add User
+            </div>
+            <div class="para-heading">
+                <br />
+                  <br />
+                   <br />
+                   <h1>
+                       Startup Analysis
+                   </h1>
+            </div>
+            <div>
+                <img src="./img/startup_img.png" alt="banner img"  class="banner_img" />
+            </div>
+
+            <div class="para">
+                <p >The project explores the potential success of startup companies in the
+            U.S. by examining key features that economically and financially impact
+            these companies. Currently, venture capital firms use intuition, financial
+            projections, and personal connections to determine which companies receive
+            seed money. Understandably, there is high risk and uncertainty associated
+            with venture capital where only a handful of companies become unicorns (>
+            $1bn valuation) with successful exits. The goal of this machine learning
+            project is to shed some light into what variables contribute to a
+            company’s success, outside of financials, to reduce the randomness and
+            personal bias in venture capital investment.</p>
+        <p class="font-italic">Dataset: The dataset is retrieved from Kaggle, named
+            <a href="">'CAX_Startup_Data.csv'</a> <a href="https://bootstrapious.com" class="text-white">
+            </a>
+        </p>
+            </div>
+
+            <div class="panel-body">
+                <form method="post" action="/login">
+
+                    <div class="form-group">
+                        <label class="col-md-4">Name</label>
+                        <input type="text" class="form-control" name="name" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4">Email</label>
+                        <input type="text" class="form-control" name="email" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+{{!-- Not sure where this goes. Displays errors from adding user --}}
+
+{{# if errors }}
+{{# each errors }}
+<p class="alert alert-danger">{{ this.msg }}</p>
+{{/each}}
+{{/if}}

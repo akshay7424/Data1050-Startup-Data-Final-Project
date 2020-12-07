@@ -1,0 +1,118 @@
+<div id="mainFeedPage" class="mainFeedPageContainer">
+    
+
+    <div class="allPostsContainer">
+
+        {{> mainFeedCreatePost}}
+
+        {{#each postsArray}}
+            {{> postBase userID=../userID}}
+        {{/each}}
+
+    </div>
+
+    <div class="stickySideContainer">
+        <button onclick="testFun()"></button>
+
+        {{> sideBarSearchBox}}
+
+        {{> sideBarQuickLinks}}
+
+        {{#if drafts}}
+            {{> sideBarPostDrafts}}
+        {{/if}}
+
+        <div class="copyright">
+            &copy; 2020 Chalfin, Kim, Shah
+            <br/>
+            All rights reserved
+        </div>
+
+        {{> sideBarBackToTopButton}}
+    </div>
+
+
+    {{!-- Scripts below --}}
+
+    {{!-- Delete this eventually: button listeners for the various dropdowns --}}
+    <script id="scriptForTemporaryTesting">
+        // Temporary testing things: button listeners
+        let commentButtons = document.querySelectorAll(".commentButton");
+        Array.from(commentButtons).forEach(element => {
+            element.addEventListener("click", function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                let postType, postID;
+                postType = this.parentElement.parentElement.className.split(" ")[0];
+                postID = this.parentElement.parentElement.id;
+                console.log("comment button for " + postType + " post " + postID + " pressed")
+            })
+        })
+        let shareButtons = document.querySelectorAll(".shareButton");
+        Array.from(shareButtons).forEach(element => {
+            element.addEventListener("click", function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                let postType, postID;
+                postType = this.parentElement.parentElement.parentElement.className.split(" ")[0];
+                postID = this.parentElement.parentElement.parentElement.id;
+                console.log("share button for " + postType + " post " + postID + " pressed")
+            })
+        })
+        let saveButtons = document.querySelectorAll(".saveButton");
+        Array.from(saveButtons).forEach(element => {
+            element.addEventListener("click", function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                let postType, postID;
+                postType = this.parentElement.parentElement.parentElement.className.split(" ")[0];
+                postID = this.parentElement.parentElement.parentElement.id;
+                console.log("save button for " + postType + " post " + postID + " pressed")
+            })
+        })
+        let reportButtons = document.querySelectorAll(".reportButton");
+        Array.from(reportButtons).forEach(element => {
+            element.addEventListener("click", function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                let postType, postID;
+                postType = this.parentElement.parentElement.parentElement.className.split(" ")[0];
+                postID = this.parentElement.parentElement.parentElement.id;
+                console.log("report button for " + postType + " post " + postID + " pressed")
+            })
+        })
+    </script>
+
+    {{!-- Main Feed only: clicking tags for them to appear in the search box --}}
+    <script id="scriptForTagClickToSearch">
+        let postTags = document.getElementsByClassName("postTag");
+
+        // Attach listeners
+        for (let i = 0; i < postTags.length; i++) {
+            postTags[i].addEventListener("click", function () {
+                document.getElementById("searchByTag").value = this.innerHTML.trim();
+            })
+        }
+    </script>
+
+    {{!-- Main Feed only: create post functionality --}}
+    <script id="scriptForCreatePostContainer" src="../assets/js/createPostContainer.js"></script>
+    <script id="scriptForPollPostCreation" src="../assets/js/createPostPollSection.js"></script>
+    <script id="scriptForImageDragDropInput"
+            src="../assets/js/createPostImageAndDocumentDragDropInput.js"></script>
+
+    {{!-- General Post Functionality --}}
+    <script id="scriptForDropdownMenus" src="../assets/js/postBaseDropDownMenus.js"></script>
+    <script id="scriptForLikeButtons" src="../assets/js/postBaseLikeButtons.js"></script>
+    <script id="optionalScriptForTagContainerDragScrolling" src="../assets/js/postBaseTagDragScroll.js"></script>
+
+    {{!-- Viewing Different Post Types Functionality --}}
+    <script id="scriptForImagePosts" src="../assets/js/postBaseImageCarousels.js"></script>
+    <script id="scriptForDocumentPosts" src="../assets/js/postBaseDocumentPosts.js"></script>
+    <script id="scriptForPollPosts" src="../assets/js/postBasePolls.js"></script>
+
+    {{!-- Back to top functionality --}}
+    <script id="scriptForBackToTopButton" src="../assets/js/sideBarBackToTopButton.js"></script>
+</div>
+
+

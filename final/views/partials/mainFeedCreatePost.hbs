@@ -1,0 +1,242 @@
+<div id="createPostContainer" class="createPostContainer"
+     data-cp-section-is-open="false">
+    <div class="createPostLeft">
+        <button id="closeCPButton"
+                class="createPostLeftIconContainer tabHighlightable zToolTipRelative" tabindex="0"
+                onclick="closeCPSection()" aria-label="Close Post Creation Section">
+            <span class="zToolTip">Close</span>
+            <span class="insideTabHighlightable" tabindex="-1">
+                <svg id="closeSymbol" class="createPostLeftIcon" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 22 22">
+                    <path d="M13.43,11,21.5,2.94A1.75,1.75,0,0,0,21.5.5a1.73,1.73,0,0,0-2.44,0L11,8.57,2.93.5A1.72,1.72,0,0,0,.5,2.94L8.57,11,.5,19.06a1.73,1.73,0,0,0,0,2.44,1.75,1.75,0,0,0,1.22.5,1.71,1.71,0,0,0,1.21-.5L11,13.43l8.06,8.07a1.73,1.73,0,1,0,2.44-2.44Z"/>
+                </svg>
+            </span>
+        </button>
+        <button id="draftCPButton"
+                class="createPostLeftIconContainer tabHighlightable zToolTipRelative" tabindex="0"
+                aria-label="Open Post Drafts">
+            <span class="zToolTip z40px">Drafts</span>
+            <span class="insideTabHighlightable" tabindex="-1">
+                <svg id="draftSymbol" class="createPostLeftIcon" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 22 22">
+                    <circle cx="14.75" cy="10" r="1.75"/>
+                    <circle cx="9.25" cy="10" r="1.75"/>
+                    <circle cx="20.25" cy="10" r="1.75"/>
+                    <path d="M20.25,14.75a4.83,4.83,0,0,1-1.75-.34V18.5H3.5V3.5h15V5.59a4.67,4.67,0,0,1,3.5,0V2.33A2.33,2.33,0,0,0,19.67,0H2.33A2.33,2.33,0,0,0,0,2.33V19.67A2.33,2.33,0,0,0,2.33,22H19.67A2.33,2.33,0,0,0,22,19.67V14.41A4.83,4.83,0,0,1,20.25,14.75Z"/>
+                </svg>
+            </span>
+        </button>
+    </div>
+    <div class="createPostCenter">
+        <div class="createPostCenterTop">
+            <button id="createPostFauxInputLink"
+                    class="tabHighlightable enterToClick cpSectionOpener zToolTipRelative"
+                    tabindex="0">
+                <span class="zToolTip">Create Text Post</span>
+                <span id="createPostFauxInput" class="insideTabHighlightable noShadow"
+                      tabindex="-1"></span>
+            </button>
+            <div id="createPostIconsContainer">
+                <button id="textPostButton" aria-label="Create Text Post"
+                        class="createPostSingleIconContainer tabHighlightable cpSectionOpener zToolTipRelative"
+                        tabindex="0">
+                    <span class="zToolTip">Create Text Post</span>
+                    <span class="insideTabHighlightable" tabindex="-1">
+                        <svg id="textSymbol" class="createPostIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 22 22">
+                            <path
+                                    d="M19,0H3A3,3,0,0,0,0,3V15a3,3,0,0,0,3,3H14l4,4h1V18a3,3,0,0,0,3-3V3A3,3,0,0,0,19,0ZM4,13a1,1,0,0,1,1-1h5a1,1,0,0,1,0,2H5A1,1,0,0,1,4,13ZM18,5a1,1,0,0,1-1,1H5A1,1,0,0,1,5,4H17A1,1,0,0,1,18,5Zm0,4a1,1,0,0,1-1,1H5A1,1,0,0,1,5,8H17A1,1,0,0,1,18,9Z"/>
+                        </svg>
+                        <span class="createPostIconText"> Text <span
+                                class="secondWord"> Post </span> </span>
+                    </span>
+                </button>
+                <button id="imagePostButton" aria-label="Create Image Post"
+                        class="createPostSingleIconContainer tabHighlightable cpSectionOpener zToolTipRelative"
+                        tabindex="0">
+                    <span class="zToolTip">Create Image Post</span>
+                    <span class="insideTabHighlightable" tabindex="-1">
+                        <svg id="imageSymbol" class="createPostIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 22 22">
+                            <path
+                                    d="M16.29,9.12l-4.17,4.17a3.06,3.06,0,0,1-4.24,0L6.71,12.12a1,1,0,0,0-1.42,0L0,17.42V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13.42l-4.29-4.3A1,1,0,0,0,16.29,9.12Z"/>
+                            <path
+                                    d="M19,0H3A3,3,0,0,0,0,3V14.58l3.88-3.87a3.06,3.06,0,0,1,4.24,0l1.17,1.17a1,1,0,0,0,1.42,0l4.17-4.17a3.06,3.06,0,0,1,4.24,0L22,10.58V3A3,3,0,0,0,19,0ZM7,7A2,2,0,1,1,9,5,2,2,0,0,1,7,7Z"/>
+                        </svg>
+                        <span class="createPostIconText"> Image <span
+                                class="secondWord"> Post </span> </span>
+                    </span>
+                </button>
+                <button id="linkPostButton" aria-label="Create Link Post"
+                        class="createPostSingleIconContainer tabHighlightable cpSectionOpener zToolTipRelative"
+                        tabindex="0">
+                    <span class="zToolTip">Create Link Post</span>
+                    <span class="insideTabHighlightable" tabindex="-1">
+                        <svg id="linkSymbol" class="createPostIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 22 22">
+                            <path
+                                    d="M14,8a6.84,6.84,0,0,0-1.37-1L11.54,8A1.69,1.69,0,0,0,11,9.25a2.48,2.48,0,0,0,0,.27,3.92,3.92,0,0,1,.82.6,3.92,3.92,0,0,1,.6.82,3.65,3.65,0,0,1-.6,4.43L9.8,17.45l-.46.46a3.71,3.71,0,0,1-5.25-5.25l.47-.47a8.61,8.61,0,0,1-.48-3.76L2,10.54A6.69,6.69,0,0,0,2,20H2a6.7,6.7,0,0,0,9.49,0l2.11-2.1.43-.44a6.71,6.71,0,0,0,1.05-8.12A6.84,6.84,0,0,0,14,8Z"/>
+                            <path
+                                    d="M20,2h0a6.7,6.7,0,0,0-9.49,0L8.43,4.07,8,4.51a6.71,6.71,0,0,0-1,8.12,6.58,6.58,0,0,0,2.42,2.42L10.46,14A1.69,1.69,0,0,0,11,12.75a2.48,2.48,0,0,0,0-.27,3.92,3.92,0,0,1-.82-.6,3.92,3.92,0,0,1-.6-.82,3.65,3.65,0,0,1,.6-4.43L12.2,4.55l.46-.46a3.71,3.71,0,0,1,5.25,5.25l-.47.47a8.61,8.61,0,0,1,.48,3.76L20,11.46A6.69,6.69,0,0,0,20,2Z"/>
+                        </svg>
+                        <span class="createPostIconText"> Link <span
+                                class="secondWord"> Post </span> </span>
+                    </span>
+                </button>
+                <button id="documentPostButton" aria-label="Create Document Post"
+                        class="createPostSingleIconContainer tabHighlightable cpSectionOpener zToolTipRelative"
+                        tabindex="0">
+                    <span class="zToolTip">Create Document Post</span>
+                    <span class="insideTabHighlightable" tabindex="-1">
+                        <svg id="documentSymbol" class="createPostIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 22 22">
+                            <polygon points="16 4 12 0 12 4 16 4"/>
+                            <path
+                                    d="M19,4H18V15a5,5,0,0,1-5,5H6.18A3,3,0,0,0,9,22H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Z"/>
+                            <path
+                                    d="M16,6H11a1,1,0,0,1-1-1V0H3A3,3,0,0,0,0,3V15a3,3,0,0,0,3,3H13a3,3,0,0,0,3-3ZM3,5H7A1,1,0,0,1,7,7H3A1,1,0,0,1,3,5ZM13,15H3a1,1,0,0,1,0-2H13a1,1,0,0,1,0,2Zm0-4H3A1,1,0,0,1,3,9H13a1,1,0,0,1,0,2Z"/>
+                        </svg>
+                        <span class="createPostIconText"> Document <span
+                                class="secondWord"> Post </span> </span>
+                    </span>
+                </button>
+                <button id="pollPostButton" aria-label="Create Poll Post"
+                        class="createPostSingleIconContainer tabHighlightable cpSectionOpener zToolTipRelative"
+                        tabindex="0">
+                    <span class="zToolTip">Create Poll Post</span>
+                    <span class="insideTabHighlightable" tabindex="-1">
+                        <svg id="pollSymbol" class="createPostIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 22 22">
+                            <path d="M6,0h6a2,2,0,0,1,2,2V4a2,2,0,0,1-2,2H6Z"/>
+                            <path d="M6,8H20a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H6Z"/>
+                            <path d="M6,16H16a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H6Z"/>
+                            <rect width="4" height="6" rx="1.99"/>
+                            <path d="M2,8H2a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H2a2,2,0,0,1-2-2V10A2,2,0,0,1,2,8Z"/>
+                            <rect y="16" width="4" height="6" rx="1.99"/>
+                        </svg>
+                        <span class="createPostIconText"> Poll <span
+                                class="secondWord"> Post </span> </span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <form id="createPostCenterBottom" autocomplete="off">
+            <div id="titleInputWrapper" class="createPostStandardInput">
+                <label for="createPostTitleInput"> Name of Startup </label>
+                <textarea id="createPostTitleInput"
+                          class="textInputClass createPostStandardInput"
+                          name="postTitle" autocomplete="off" rows="1"
+                          placeholder="Startup Name" required maxlength="300"></textarea>
+                {{!-- do not put ANYTHING, even whitespace, between the textarea tags above --}}
+                <div id="createPostTitleInputCharacterCount"> 0/300</div>
+            </div>
+
+            <div id="textPostForm" class="createPostCenterBottomSpecificForm">
+                <label for="createPostBodyInput"> Information </label>
+                <textarea id="createPostBodyInput" class="textInputClass"
+                          placeholder="Startup Information" autocomplete="off"
+                          name="postBody" disabled required rows="4"></textarea>
+            </div>
+            <div id="imagePostForm" class="createPostCenterBottomSpecificForm">
+                <div id="createPostImageDropArea" class="emptyForJSUse">
+                    <div id="createPostImageDropAreaText"></div>
+
+                    <label id="createPostUploadAnImage"
+                           class="labelButton tabHighlightable enterToClick"
+                           for="createPostImageInputHidden" tabindex="0">
+                        <span class="insideTabHighlightable" tabindex="-1">
+                            upload images
+                        </span>
+                    </label>
+                    <input id="createPostImageInputHidden" type="file" multiple
+                           accept="image/png,image/gif,image/jpeg"
+                           name="postImages" onchange="handleImageClickSelect(this)" disabled
+                           required>
+                </div>
+            </div>
+            <div id="linkPostForm" class="createPostCenterBottomSpecificForm">
+                <label for="createPostLinkInput"> Link </label>
+                <input type="url" id="createPostLinkInput" class="textInputClass preventEnter"
+                       placeholder="Link" name="postLink" disabled required>
+            </div>
+            <div id="documentPostForm" class="createPostCenterBottomSpecificForm">
+                <div id="createPostDocumentDropArea" class="emptyForJSUse">
+                    <div id="createPostDocumentDropAreaText"></div>
+
+                    <label id="createPostUploadADocument"
+                           class="labelButton tabHighlightable enterToClick"
+                           for="createPostDocumentInputHidden" tabindex="0">
+                        <span class="insideTabHighlightable" tabindex="-1">
+                            upload a document
+                        </span>
+                    </label>
+                    <input id="createPostDocumentInputHidden" type="file"
+                           accept="application/pdf"
+                           name="postDocument" onchange="handleDocumentClickSelect(this)" disabled
+                           required>
+                </div>
+            </div>
+            <div id="pollPostForm" class="createPostCenterBottomSpecificForm">
+                <div id="createPostPollArea">
+                    <div class="createPostOptionWrapper">
+                        <div class="blocky"></div>
+                        <label for="postPollOption1">Option 1</label>
+                        <input id="postPollOption1" name="postPollOption1"
+                               type="text" class="textInputClass pollOptionInputClass preventEnter"
+                               placeholder="Option 1" disabled required maxlength="120">
+                    </div>
+                    <div class="createPostOptionWrapper">
+                        <div class="blocky"></div>
+                        <label for="postPollOption2">Option 2</label>
+                        <input id="postPollOption2" name="postPollOption2"
+                               type="text" class="textInputClass pollOptionInputClass preventEnter"
+                               placeholder="Option 2" disabled required maxlength="120">
+                    </div>
+
+                    <button id="createPostPollAdd" type="button"
+                            aria-label="Add Poll Option" tabindex="0"
+                            class="createPostPollAdd tabHighlightable zToolTipRelative">
+                        <span class="zToolTip">Add Poll Option</span>
+                        <span class="insideTabHighlightable" tabindex="-1">
+                            Add Option
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <label for="createPostTagsInput"> State (CA, NY, ...) </label>
+            <input id="createPostTagsInput"
+                   class="textInputClass createPostStandardInput preventEnter"
+                   type="text" name="postTags" autocomplete="off"
+                   placeholder="State (CA, NY, ...)" required>
+
+            <div class="createPostBottomMostButtonsContainer createPostStandardInput">
+                <button id="createPostSaveDraftButton" aria-label="Save Draft"
+                        tabindex="0"
+                        class="createPostSaveDraftButton tabHighlightable zToolTipRelative">
+                    <span class="zToolTip">Save Draft</span>
+                    <span class="insideTabHighlightable" tabindex="-1">
+                        Save Draft
+                    </span>
+                </button>
+                <button id="createPostSubmitButton" aria-label="Submit Post"
+                        tabindex="0"
+                        class="createPostSubmitButton tabHighlightable zToolTipRelative">
+                    <span class="zToolTip">Submit Post</span>
+                    <span class="insideTabHighlightable" tabindex="-1">
+                        Submit
+                    </span>
+                </button>
+            </div>
+
+            <input style="display: none;" id="isAnonymous" name="anonymous" value="false">
+            <input style="display: none;" id="isStudentOnly" name="studentOnly" value="false">
+            <input style="display: none;" id="userID" name="userID" value="{{userID}}">
+        </form>
+    </div>
+</div>

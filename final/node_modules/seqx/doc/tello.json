@@ -1,0 +1,114 @@
+{
+  "classes": {
+    "SeqX": {
+      "name": "SeqX",
+      "superClass": "EventEmitter",
+      "filename": "lib/SeqX.coffee",
+      "srcUrl": "https://github.com/venkatperi/seqx/blob/v1.1.1/lib/SeqX.coffee#L46",
+      "sections": [],
+      "classMethods": [],
+      "instanceMethods": [
+        {
+          "name": "constructor",
+          "sectionName": null,
+          "srcUrl": "https://github.com/venkatperi/seqx/blob/v1.1.1/lib/SeqX.coffee#L54",
+          "visibility": "Public",
+          "summary": "Create a SeqX sequential executor",
+          "description": "Create a SeqX sequential executor",
+          "arguments": [
+            {
+              "children": [
+                {
+                  "name": "manual",
+                  "description": "{Boolean} If set, don't start immediate task execution",
+                  "type": "Boolean",
+                  "isOptional": false
+                },
+                {
+                  "name": "context",
+                  "description": "optional context {Object} which is passed to tasks",
+                  "type": "Object",
+                  "isOptional": false
+                }
+              ],
+              "name": "opts",
+              "description": "{Object} options",
+              "type": "Object",
+              "isOptional": false
+            }
+          ]
+        },
+        {
+          "name": "start",
+          "sectionName": null,
+          "srcUrl": "https://github.com/venkatperi/seqx/blob/v1.1.1/lib/SeqX.coffee#L69",
+          "visibility": "Public",
+          "summary": "Start the executor ",
+          "description": "Start the executor "
+        },
+        {
+          "name": "add",
+          "sectionName": null,
+          "srcUrl": "https://github.com/venkatperi/seqx/blob/v1.1.1/lib/SeqX.coffee#L81",
+          "visibility": "Public",
+          "summary": "Add the given task(s) to the queue",
+          "description": "Add the given task(s) to the queue",
+          "arguments": [
+            {
+              "name": "fn...",
+              "description": "a {Function} or array of {Function}s to add to the to add to the queue",
+              "type": "Function",
+              "isOptional": false
+            }
+          ],
+          "returnValues": [
+            {
+              "type": "Promise",
+              "description": "Returns {Promise} which resolves when the task(s) complete"
+            }
+          ]
+        },
+        {
+          "name": "addn",
+          "sectionName": null,
+          "srcUrl": "https://github.com/venkatperi/seqx/blob/v1.1.1/lib/SeqX.coffee#L92",
+          "visibility": "Public",
+          "summary": "Add the given task `n` times",
+          "description": "Add the given task `n` times",
+          "arguments": [
+            {
+              "name": "fn",
+              "description": "{Function} task ",
+              "type": "Function",
+              "isOptional": false
+            },
+            {
+              "name": null,
+              "description": "`n ` {Number} of time to execute the task",
+              "type": null
+            }
+          ],
+          "returnValues": [
+            {
+              "type": "Promise",
+              "description": "Returns {Promise} which resolves the last iteration is complete"
+            }
+          ]
+        },
+        {
+          "name": "abort",
+          "sectionName": null,
+          "srcUrl": "https://github.com/venkatperi/seqx/blob/v1.1.1/lib/SeqX.coffee#L99",
+          "visibility": "Public",
+          "summary": "Abort pending tasks. Executor will throw an exeption\nwhich can be caught with a promise .fail() handler",
+          "description": "Abort pending tasks. Executor will throw an exeption\nwhich can be caught with a promise .fail() handler"
+        }
+      ],
+      "classProperties": [],
+      "instanceProperties": [],
+      "visibility": "Public",
+      "summary": "{SeqX} Execute tasks sequentially.",
+      "description": "{SeqX} Execute tasks sequentially."
+    }
+  }
+}
