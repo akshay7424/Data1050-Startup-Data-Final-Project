@@ -85,7 +85,7 @@ try {
   console.log("Unable to sync");
 }
 
-app.listen(8080, function () {
+app.listen(process.env.PORT || 8080, function () {
   console.log("Server listening on port 8080");
 });
 
