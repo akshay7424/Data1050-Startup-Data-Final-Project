@@ -19,101 +19,7 @@
 
         <div class="navBarAllIconsContainer">
 
-            <a id="navBarCreatePostLink"
-               class="navBarSingleIconContainer tabHighlightable enterToClick zToolTipRelative"
-               tabindex="0" aria-label="Create Post"
-               href="/">
-                <span class="zToolTip">Create Post</span>
-                <span class="insideTabHighlightable" tabindex="-1">
-                    <svg id="createPostSymbol" class="navBarSingleIcon"
-                         xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 21.02 22">
-                        <path
-                                d="M20.44,4.12,10.37,14.18a2.94,2.94,0,0,1-1.28.76l-2.51.73a1,1,0,0,1-1.24-1.25l.74-2.49a3,3,0,0,1,.75-1.28L16.9.59a2,2,0,0,1,2.83,0l.71.7A2,2,0,0,1,20.44,4.12Z"/>
-                        <path d="M17,10.38V19H3V3h8.66l3-3H2A2,2,0,0,0,0,2V20a2,2,0,0,0,2,2H18a2,2,0,0,0,2-2V7.38Z"/>
-                    </svg>
-                </span>
-            </a>
-
-            <a id="navBarSavedPostsLink"
-               class="navBarSingleIconContainer tabHighlightable zToolTipRelative"
-               href="/profile#saved-posts" tabindex="0" aria-label="Saved Posts">
-                <span class="zToolTip">Saved Posts</span>
-                <span class="insideTabHighlightable" tabindex="-1">
-                    <svg id="savedPostsSymbol" class="navBarSingleIcon"
-                         xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 16 22.33">
-                        <path
-                                d="M14,0H2A2,2,0,0,0,0,2V21.33a1,1,0,0,0,1.63.78L7.37,17.5a1,1,0,0,1,1.26,0l5.74,4.61A1,1,0,0,0,16,21.33V2A2,2,0,0,0,14,0ZM10,12H6a1,1,0,0,1,0-2h4a1,1,0,0,1,0,2Zm1-4H5A1,1,0,0,1,5,6h6a1,1,0,0,1,0,2Z"/>
-                    </svg>
-                </span>
-            </a>
-
-            <a id="navBarNotificationsDropdownMenuLink"
-               class="navBarSingleIconContainer tabHighlightable zToolTipRelative"
-               href="/notifications"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-               aria-label="Notifications">
-                <span class="zToolTip">Notifications</span>
-                <span class="insideTabHighlightable" tabindex="-1">
-                    {{!-- {{#if notifications}} --}}
-                    <svg id="notificationsSymbol" class="navBarSingleIcon"
-                         xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 22 21.95">
-                        <path
-                                d="M19,9a6.31,6.31,0,0,0-5.21-5.9,1,1,0,0,1-.79-1V1a1,1,0,0,0-1-1H10A1,1,0,0,0,9,1V2.13a1,1,0,0,1-.79,1A6.31,6.31,0,0,0,3,9c-.32,3-1.3,4.15-2.46,4.75a1,1,0,0,0-.54.89V16a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V14.64a1,1,0,0,0-.54-.89C20.3,13.15,19.32,12,19,9Z"/>
-                        <path d="M7.19,19a3.94,3.94,0,0,0,7.62,0Z"/>
-                    </svg>
-                    {{!-- {{else}}
-                    <svg id="notificationsSymbol" class="navBarSingleIconAlt" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 22 21.95">
-                        <path
-                            d="M19,9a6.31,6.31,0,0,0-5.21-5.9,1,1,0,0,1-.79-1V1a1,1,0,0,0-1-1H10A1,1,0,0,0,9,1V2.13a1,1,0,0,1-.79,1A6.31,6.31,0,0,0,3,9c-.32,3-1.3,4.15-2.46,4.75a1,1,0,0,0-.54.89V16a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V14.64a1,1,0,0,0-.54-.89C20.3,13.15,19.32,12,19,9Z" />
-                        <path d="M7.19,19a3.94,3.94,0,0,0,7.62,0Z" />
-                    </svg>
-                    {{/if}} --}}
-                </span>
-            </a>
-            <div id="navBarNotificationsDropdownMenu"
-                 class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
-                 aria-labelledby="navBarNotificationsDropdownMenuLink">
-                <div class="navBarNotificationsDropdownMenuTitle">
-                    <b>Notifications</b>
-                </div>
-                {{#each notifications}}
-                    <div class="navBarNotificationsDropdownMenuEntry" href="/{{postID}}">
-                        <a href="/{{postID}}">
-                            {{#if read}}
-                                <div class="notification-content-read">{{content}}</div>
-                            {{else}}
-                                <div>
-                                    <div class="notification-content-unread">{{content}}</div>
-                                    <div class="dotcontainer">
-                                        <span class="dot"></span>
-                                    </div>
-                                </div>
-                            {{/if}}
-                        </a>
-                    </div>
-
-                {{/each}}
-            </div>
-
-            <a id="navBarProfileLink"
-               class="navBarSingleIconContainer tabHighlightable zToolTipRelative"
-               href="/profile" aria-label="Profile">
-                <span class="zToolTip">Profile</span>
-                <span class="insideTabHighlightable" tabindex="-1">
-                    <svg id="profileSymbol" class="navBarSingleIcon"
-                         xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 22 22">
-                        <path
-                                d="M7.08,12A4.63,4.63,0,0,1,6,9,5,5,0,0,1,7.68,5.26a5,5,0,0,1,8.26,3A4.93,4.93,0,0,1,15,12a.09.09,0,0,0,0,.07,7.89,7.89,0,0,1,4,6.49A11,11,0,1,0,3,18.58,8,8,0,0,1,7.08,12Z"/>
-                        <path
-                                d="M14,13.78a1.92,1.92,0,0,1-.95-1.3,2.12,2.12,0,0,1,.39-1.68A3,3,0,0,0,14,8.53,3,3,0,0,0,11.37,6L11,6a2.93,2.93,0,0,0-2,.76A3,3,0,0,0,8,9a2.9,2.9,0,0,0,.65,1.85,2,2,0,0,1-.59,2.92A6,6,0,0,0,5.12,20.2s0,.06,0,.1a10.95,10.95,0,0,0,11.72,0A6.24,6.24,0,0,0,17,19,6,6,0,0,0,14,13.78Z"/>
-                    </svg>
-                </span>
-            </a>
+        
 
             <button id="navBarSettingsDropdownMenuLink"
                     class="navBarSingleIconContainer navBarDropdownIconContainer tabHighlightable zToolTipRelative"
@@ -130,28 +36,7 @@
                 </span>
             </button>
             <div class="navBarDropdownMenu">
-                <div class="securityButton navBarDropdownMenuOption tabHighlightable enterToClick"
-                     tabindex="0">
-                    <span class="insideTabHighlightable" tabindex="-1">
-                        <svg class="lockSymbol navBarDropdownMenuOptionIcon"
-                             xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 22 20.74">
-                            <path d="M12.67.26A1,1,0,0,0,11,1V4.74c-7,.89-11,7-11,16,2-5,7-8,11-8v3.74a1,1,0,0,0,1.67.74L22,8.74Z"/>
-                        </svg>
-                        <span class="navBarDropdownMenuOptionText"> Account Security </span>
-                    </span>
-                </div>
-                <div class="preferencesButton navBarDropdownMenuOption tabHighlightable enterToClick"
-                     tabindex="0">
-                    <span class="insideTabHighlightable" tabindex="-1">
-                        <svg class="saveAddSymbol navBarDropdownMenuOptionIcon"
-                             xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 16 22.33">
-                            <path d="M14,0H2A2,2,0,0,0,0,2V21.33a1,1,0,0,0,1.63.78L7.37,17.5a1,1,0,0,1,1.26,0l5.74,4.61A1,1,0,0,0,16,21.33V2A2,2,0,0,0,14,0ZM12,10H10a1,1,0,0,0-1,1v2a1,1,0,0,1-2,0V11a1,1,0,0,0-1-1H4A1,1,0,0,1,4,8H6A1,1,0,0,0,7,7V5A1,1,0,0,1,9,5V7a1,1,0,0,0,1,1h2a1,1,0,0,1,0,2Z"/>
-                        </svg>
-                        <span class="navBarDropdownMenuOptionText"> Display Preferences </span>
-                    </span>
-                </div>
+              
                 <div class="helpButton navBarDropdownMenuOption tabHighlightable enterToClick"
                      tabindex="0">
                     <span class="insideTabHighlightable" tabindex="-1">
@@ -166,6 +51,7 @@
                 </div>
                 <div class="navBarDropdownMenuLine"></div>
                 <div class="logOutButton navBarDropdownMenuOption tabHighlightable enterToClick"
+                href="/logout"
                      tabindex="0">
                     <span class="insideTabHighlightable" tabindex="-1">
                         <svg class="reportSymbol navBarDropdownMenuOptionIcon"

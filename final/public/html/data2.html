@@ -54,15 +54,10 @@
       </div>
     </nav>
     <p class="description">
-      Looking at forecasts of startup companies using machine learning is a
-      relevant yet largely untouched field. Currently, venture capital firms use
-      intuition, financial projections, and personal connections to determine
-      which companies receive seed money. Understandably, there is high risk and
-      uncertainty associated with venture capital where only a handful of
-      companies become unicorns (> $1bn valuation) with successful exits. The
-      goal of this machine learning project is to shed some light into what
-      variables contribute to a company’s success, outside of financials, to
-      reduce the randomness and personal bias in venture capital investment.
+      The bubble chart shows the largest startups in U.S. currently, defined as privately owned companies. 
+      The companies are plotted along two axes, x-axis being funds raised in Bil. USD, and y-axis being 
+      revenue in Bil. USD. As you can see below, no observable trend or correlation seems to exist 
+      between the two dimensions.
     </p>
     <div id="scatterchart"><svg style="width: 400px; height: 400px"></svg></div>
 
@@ -70,26 +65,24 @@
       data_scatterchart = [
         {
           values: [
-            { x: 3, y: -1, shape: "circle", size: "1" },
-            { x: 4, y: 2, shape: "circle", size: "1" },
-            { x: 0, y: 3, shape: "circle", size: "1" },
-            { x: -3, y: 3, shape: "circle", size: "1" },
-            { x: 5, y: 15, shape: "circle", size: "1" },
-            { x: 7, y: 2, shape: "circle", size: "1" },
+            { x: 0.1, y: 0.05, shape: "circle", size: "2"},
+            { x: 0.55, y: 0.89, shape: "circle", size: "1.6" },
+            { x: 1.1, y: 0.6, shape: "circle", size: "2" },
+            { x: 1.0, y: 0.4, shape: "circle", size: "2.8" },
+            { x: 2.4, y: 0.49, shape: "circle", size: "4" },
+            { x: 6.0, y: 0.77, shape: "circle", size: "8"},
           ],
-          key: "series 1",
-          yAxis: "1",
+          key: "Silicon Valley ",
+          yAxis: "1"
         },
         {
           values: [
-            { x: 3, y: 1, shape: "cross", size: "10" },
-            { x: 4, y: -2, shape: "cross", size: "10" },
-            { x: 0, y: 4, shape: "cross", size: "10" },
-            { x: -3, y: 7, shape: "cross", size: "10" },
-            { x: 5, y: -5, shape: "cross", size: "10" },
-            { x: 7, y: 3, shape: "cross", size: "10" },
+            { x: 0.9, y: 0.18, shape: "cross", size: "5" },
+            { x: 1, y: 0.8, shape: "cross", size: "5" },
+            { x: 1.2, y: 0.04, shape: "cross", size: "5" },
+         
           ],
-          key: "series 2",
+          key: "Outside Silicon Valley",
           yAxis: "1",
         },
       ];
@@ -97,13 +90,14 @@
       nv.addGraph(function () {
         var chart = nv.models.scatterChart();
 
-        chart.margin({ top: 30, right: 60, bottom: 20, left: 60 });
+        chart.margin({ top: 60, right: 40, bottom: 60, left: 40 });
 
         var datum = data_scatterchart;
 
         chart.xAxis.tickFormat(d3.format(",.02f"));
         chart.yAxis.tickFormat(d3.format(",.02f"));
-
+ 
+        
         chart.showLegend(true);
 
         chart

@@ -50,54 +50,80 @@
         </ul>
       </div>
     </nav>
-    <iframe src="html/heatmap_CA.html" width="800" height="800"></iframe>
-    <button class="tablink" onclick="openPage('Home', this, 'red')">
-      Home
-    </button>
-    <button
-      class="tablink"
-      onclick="openPage('News', this, 'green')"
-      id="defaultOpen"
-    >
-      News
-    </button>
-    <button class="tablink" onclick="openPage('Contact', this, 'blue')">
-      Contact
-    </button>
-    <button class="tablink" onclick="openPage('About', this, 'orange')">
-      About
-    </button>
+    <div>
+      <h2>Heat Map by State</h2>
+      <p>
+        Looking at hello of startup companies using machine learning is a relevant yet largely untouched field. Currently, venture capital firms use intuition, financial projections, and personal connections to
+      </p>
+      
+    <div id='iframeDisplay'>
+      
+        <p> There is no state selected. Click on a button below to view each state.
+        </p>
+      </div>
+      <br />
+      <button class="tablink" onclick="openCAHeatmap()">
+        CA
+      </button style="align-items:center">
+      <script>
+        function openCAHeatmap() {
+            document.getElementById("iframeDisplay").innerHTML = "<iframe src=\"html/heatmap_CA.html\" width=\"600\" height=\"500\" margin=\"auto\"></iframe>";
+        }
+    </script>
 
-    <div id="Home" class="tabcontent">
-      <h3>Home</h3>
-      <p>Home is where the heart is..</p>
-    </div>
+      <button class="tablink" onclick="openMAHeatmap()">
+        MA
+      </button style="align-items:center">
+      <script>
+        function openMAHeatmap() {
+            document.getElementById("iframeDisplay").innerHTML = "<iframe src=\"html/heatmap_MA.html\" width=\"600\" height=\"500\" margin=\"auto\"></iframe>";
+        }
+    </script>
 
-    <div id="News" class="tabcontent">
-      <h3>News</h3>
-      <p>Some news this fine day!</p>
-    </div>
+<button class="tablink" onclick="openNYHeatmap()">
+  NY
+</button style="align-items:center">
+<script>
+  function openNYHeatmap() {
+      document.getElementById("iframeDisplay").innerHTML = "<iframe src=\"html/heatmap_NY.html\" width=\"600\" height=\"500\" margin=\"auto\"></iframe>";
+  }
+</script>
 
-    <div id="Contact" class="tabcontent">
-      <h3>Contact</h3>
-      <p>Get in touch, or swing by for a cup of coffee.</p>
-    </div>
+<button class="tablink" onclick="openTXHeatmap()">
+  TX
+</button style="align-items:center">
+<script>
+  function openTXHeatmap() {
+      document.getElementById("iframeDisplay").innerHTML = "<iframe src=\"html/heatmap_TX.html\" width=\"600\" height=\"500\" margin=\"auto\"></iframe>";
+  }
+</script>
 
-    <div id="About" class="tabcontent">
-      <h3>About</h3>
-      <p>Who we are and what we do.</p>
+<button class="tablink" onclick="openWAHeatmap()">
+  WA
+</button style="align-items:center">
+<script>
+  function openWAHeatmap() {
+      document.getElementById("iframeDisplay").innerHTML = "<iframe src=\"html/heatmap_WA.html\" width=\"600\" height=\"500\" margin=\"auto\"></iframe>";
+  }
+</script>
+
+      <div id="Home" class="tabcontent">
+        <h3>H3</h3>
+      </div>
+
+      <p class="description">
+        Looking at hello of startup companies using machine learning is a
+        relevant yet largely untouched field. Currently, venture capital firms
+        use intuition, financial projections, and personal connections to
+        determine which companies receive seed money. Understandably, there is
+        high risk and uncertainty associated with venture capital where only a
+        handful of companies become unicorns (> $1bn valuation) with successful
+        exits. The goal of this machine learning project is to shed some light
+        into what variables contribute to a company’s success, outside of
+        financials, to reduce the randomness and personal bias in venture
+        capital investment.
+      </p>
     </div>
-    <p class="description">
-      Looking at hello of startup companies using machine learning is a relevant
-      yet largely untouched field. Currently, venture capital firms use
-      intuition, financial projections, and personal connections to determine
-      which companies receive seed money. Understandably, there is high risk and
-      uncertainty associated with venture capital where only a handful of
-      companies become unicorns (> $1bn valuation) with successful exits. The
-      goal of this machine learning project is to shed some light into what
-      variables contribute to a company’s success, outside of financials, to
-      reduce the randomness and personal bias in venture capital investment.
-    </p>
 
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
